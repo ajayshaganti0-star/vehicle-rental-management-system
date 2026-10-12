@@ -1,55 +1,51 @@
 # Vehicle Rental Management System (VRMS)
 
-A full-stack starter based on the uploaded project diagram:
-- Frontend: React + TypeScript + Vite
-- Backend: Java 17 + Spring Boot 3 + Spring Data JPA + Spring Security + JWT
-- Database: H2 by default for easy local startup; PostgreSQL configuration included
-- Features: customer registration/login, vehicle browsing/search, date-based availability, booking creation, admin vehicle CRUD, booking management, dashboard metrics, invoice/confirmation screen, Stripe integration placeholder.
+A full-stack vehicle rental application.
 
-## Quick start
+- **Frontend:** React, TypeScript, Vite
+- **Backend:** Java, Spring Boot, Spring Data JPA, Spring Security, JWT
+- **Database:** H2
+- **Features:** Customer registration and login, vehicle browsing, availability checking, bookings, admin vehicle management, dashboard metrics, and invoice/confirmation screens.
 
-### Requirements
-- Node.js 20+ and npm
-- Java 17+
-- Maven 3.9+ (or use your IDE's Maven support)
+## Requirements
 
-### 1) Start backend
+- Node.js and npm
+- Java 21 (or the version configured in your project)
+- Maven, or Maven support in your IDE
+
+## Quick Start
+
+### 1. Start the backend
+
+Open a terminal in VS Code and run:
+
 ```bash
 cd backend
 mvn spring-boot:run
 ```
-Backend runs at `http://localhost:8080`. H2 console: `http://localhost:8080/h2-console` (JDBC URL `jdbc:h2:mem:vrmsdb`, user `sa`, blank password).
 
-Seed admin:
-- Email: `admin@vrms.local`
-- Password: `Admin123!`
+The backend should run at `http://localhost:8080`.
 
-Seed demo customer:
-- Email: `customer@vrms.local`
-- Password: `Customer123!`
+### 2. Start the frontend
 
-### 2) Start frontend in another terminal
+Open a second terminal in VS Code and run:
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Open the URL Vite prints, usually `http://localhost:5173`.
 
-## API overview
+Open the local URL printed in the terminal.
+
+## API Endpoints
+
 - `POST /api/auth/register`
 - `POST /api/auth/login`
-- `GET /api/vehicles?search=&category=`
-- `GET /api/vehicles/{id}`
-- `GET /api/vehicles/{id}/availability?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD`
-- `POST /api/bookings` (authenticated)
-- `GET /api/bookings/my` (authenticated)
-- `GET /api/admin/dashboard` (admin)
-- `POST /api/admin/vehicles` (admin)
-- `PUT /api/admin/vehicles/{id}` (admin)
-- `DELETE /api/admin/vehicles/{id}` (admin)
-- `GET /api/admin/bookings` (admin)
-- `PATCH /api/admin/bookings/{id}/status?status=CONFIRMED` (admin)
+- `GET /api/vehicles`
+- `POST /api/bookings`
+- `GET /api/bookings/my`
 
-## Notes before real deployment
-This is a runnable starter, not a production-ready payment or deployment setup. Stripe checkout is intentionally a placeholder; do not collect or store raw card details. Configure Stripe Checkout on the server with secret keys in environment variables before taking payments. Replace the development JWT secret, use HTTPS, configure a production database, add email delivery and tests, and review security settings before public deployment.
+## Notes
+
+This project is intended for development and learning. Review security settings, JWT secrets, database configuration, and payment integration before deploying it publicly.
